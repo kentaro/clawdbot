@@ -21,10 +21,13 @@ importers:
         version: 3.975.0
       '@buape/carbon':
         specifier: 0.14.0
-        version: 0.14.0(hono@4.11.4)
+        version: 0.14.0(hono@4.11.4)(opusscript@0.1.1)
       '@clack/prompts':
         specifier: ^0.11.0
         version: 0.11.0
+      '@discordjs/voice':
+        specifier: ^0.19.0
+        version: 0.19.0(opusscript@0.1.1)
       '@grammyjs/runner':
         specifier: ^2.0.3
         version: 2.0.3(grammy@1.39.3)
@@ -64,6 +67,9 @@ importers:
       '@slack/web-api':
         specifier: ^7.13.0
         version: 7.13.0
+      '@snazzah/davey':
+        specifier: ^0.1.9
+        version: 0.1.9
       '@whiskeysockets/baileys':
         specifier: 7.0.0-rc.9
         version: 7.0.0-rc.9(audio-decode@2.2.3)(sharp@0.34.5)
@@ -97,6 +103,9 @@ importers:
       discord-api-types:
         specifier: ^0.38.37
         version: 0.38.37
+      discord.js:
+        specifier: ^14.25.1
+        version: 14.25.1
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
@@ -133,6 +142,9 @@ importers:
       node-edge-tts:
         specifier: ^1.2.9
         version: 1.2.9
+      opusscript:
+        specifier: ^0.1.1
+        version: 0.1.1
       osc-progress:
         specifier: ^0.3.0
         version: 0.3.0
@@ -142,6 +154,9 @@ importers:
       playwright-core:
         specifier: 1.58.0
         version: 1.58.0
+      prism-media:
+        specifier: ^1.3.5
+        version: 1.3.5(opusscript@0.1.1)
       proper-lockfile:
         specifier: ^4.1.2
         version: 4.1.2
@@ -160,6 +175,9 @@ importers:
       tslog:
         specifier: ^4.10.2
         version: 4.10.2
+      tweetnacl:
+        specifier: ^1.0.3
+        version: 1.0.3
       undici:
         specifier: ^7.19.0
         version: 7.19.0
@@ -383,12 +401,12 @@ importers:
       '@microsoft/agents-hosting-extensions-teams':
         specifier: ^1.2.2
         version: 1.2.2
-      moltbot:
-        specifier: workspace:*
-        version: link:../..
       express:
         specifier: ^5.2.1
         version: 5.2.1
+      moltbot:
+        specifier: workspace:*
+        version: link:../..
       proper-lockfile:
         specifier: ^4.1.2
         version: 4.1.2
@@ -868,9 +886,37 @@ packages:
   '@d-fischer/typed-event-emitter@3.3.3':
     resolution: {integrity: sha512-OvSEOa8icfdWDqcRtjSEZtgJTFOFNgTjje7zaL0+nAtu2/kZtRCSK5wUMrI/aXtCH8o0Qz2vA8UqkhWUTARFQQ==}
 
+  '@discordjs/builders@1.13.1':
+    resolution: {integrity: sha512-cOU0UDHc3lp/5nKByDxkmRiNZBpdp0kx55aarbiAfakfKJHlxv/yFW1zmIqCAmwH5CRlrH9iMFKJMpvW4DPB+w==}
+    engines: {node: '>=16.11.0'}
+
+  '@discordjs/collection@1.5.3':
+    resolution: {integrity: sha512-SVb428OMd3WO1paV3rm6tSjM4wC+Kecaa1EUGX7vc6/fddvw/6lg90z4QtCqm21zvVe92vMMDt9+DkIvjXImQQ==}
+    engines: {node: '>=16.11.0'}
+
+  '@discordjs/collection@2.1.1':
+    resolution: {integrity: sha512-LiSusze9Tc7qF03sLCujF5iZp7K+vRNEDBZ86FT9aQAv3vxMLihUvKvpsCWiQ2DJq1tVckopKm1rxomgNUc9hg==}
+    engines: {node: '>=18'}
+
+  '@discordjs/formatters@0.6.2':
+    resolution: {integrity: sha512-y4UPwWhH6vChKRkGdMB4odasUbHOUwy7KL+OVwF86PvT6QVOwElx+TiI1/6kcmcEe+g5YRXJFiXSXUdabqZOvQ==}
+    engines: {node: '>=16.11.0'}
+
+  '@discordjs/rest@2.6.0':
+    resolution: {integrity: sha512-RDYrhmpB7mTvmCKcpj+pc5k7POKszS4E2O9TYc+U+Y4iaCP+r910QdO43qmpOja8LRr1RJ0b3U+CqVsnPqzf4w==}
+    engines: {node: '>=18'}
+
+  '@discordjs/util@1.2.0':
+    resolution: {integrity: sha512-3LKP7F2+atl9vJFhaBjn4nOaSWahZ/yWjOvA4e5pnXkt2qyXRCHLxoBQy81GFtLGCq7K9lPm9R517M1U+/90Qg==}
+    engines: {node: '>=18'}
+
   '@discordjs/voice@0.19.0':
     resolution: {integrity: sha512-UyX6rGEXzVyPzb1yvjHtPfTlnLvB5jX/stAMdiytHhfoydX+98hfympdOwsnTktzr+IRvphxTbdErgYDJkEsvw==}
     engines: {node: '>=22.12.0'}
+
+  '@discordjs/ws@1.2.3':
+    resolution: {integrity: sha512-wPlQDxEmlDg5IxhJPuxXr3Vy9AjYq5xCvFWGJyD7w7Np8ZGu+Mc+97LCoEc/+AYCo2IDpKioiH0/c/mj5ZR9Uw==}
+    engines: {node: '>=16.11.0'}
 
   '@emnapi/core@1.8.1':
     resolution: {integrity: sha512-AvT9QFpxK0Zd8J0jopedNm+w/2fIzvtPKPjqyw9jwvBaReTTqPBk9Hixaz7KbjimP+QNz605/XnjFcDAL2pqBg==}
@@ -2358,6 +2404,18 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@sapphire/async-queue@1.5.5':
+    resolution: {integrity: sha512-cvGzxbba6sav2zZkH8GPf2oGk9yYoD5qrNWdu9fRehifgnFZJMV+nuy2nON2roRO4yQQ+v7MK/Pktl/HgfsUXg==}
+    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+
+  '@sapphire/shapeshift@4.0.0':
+    resolution: {integrity: sha512-d9dUmWVA7MMiKobL3VpLF8P2aeanRTu6ypG2OIaEv/ZHH/SUQ2iHOVyi5wAPjQ+HmnMuL0whK9ez8I/raWbtIg==}
+    engines: {node: '>=v16'}
+
+  '@sapphire/snowflake@3.5.3':
+    resolution: {integrity: sha512-jjmJywLAFoWeBi1W7994zZyiNWPIiqRRNAmSERxyg93xRGzNYvGjlZ0gR6x0F4gPRi2+0O6S71kOZYyr3cxaIQ==}
+    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+
   '@scure/base@1.1.1':
     resolution: {integrity: sha512-ZxOhsSyxYwLJj3pLZCefNitxsj093tb2vq90mp2txoYeBqbcjDjqFhyM8eUjq/uFm6zJ+mUuqxlS2FkuSY1MTA==}
 
@@ -2617,6 +2675,93 @@ packages:
   '@smithy/uuid@1.1.0':
     resolution: {integrity: sha512-4aUIteuyxtBUhVdiQqcDhKFitwfd9hqoSDYY2KRXiWtgoWJ9Bmise+KfEPDiVHWeJepvF8xJO9/9+WDIciMFFw==}
     engines: {node: '>=18.0.0'}
+
+  '@snazzah/davey-android-arm-eabi@0.1.9':
+    resolution: {integrity: sha512-Dq0WyeVGBw+uQbisV/6PeCQV2ndJozfhZqiNIfQxu6ehIdXB7iHILv+oY+AQN2n+qxiFmLh/MOX9RF+pIWdPbA==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [android]
+
+  '@snazzah/davey-android-arm64@0.1.9':
+    resolution: {integrity: sha512-OE16OZjv7F/JrD7Mzw5eL2gY2vXRPC8S7ZrmkcMyz/sHHJsGHlT+L7X5s56Bec1YDTVmzAsH4UBuvVBoXuIWEQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [android]
+
+  '@snazzah/davey-darwin-arm64@0.1.9':
+    resolution: {integrity: sha512-z7oORvAPExikFkH6tvHhbUdZd77MYZp9VqbCpKEiI+sisWFVXgHde7F7iH3G4Bz6gUYJfgvKhWXiDRc+0SC4dg==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@snazzah/davey-darwin-x64@0.1.9':
+    resolution: {integrity: sha512-f1LzGyRGlM414KpXml3OgWVSd7CgylcdYaFj/zDBb8bvWjxyvsI9iMeuPfe/cduloxRj8dELde/yCDZtFR6PdQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@snazzah/davey-freebsd-x64@0.1.9':
+    resolution: {integrity: sha512-k6p3JY2b8rD6j0V9Ql7kBUMR4eJdcpriNwiHltLzmtGuz/nK5RGQdkEP68gTLc+Uj3xs5Cy0jRKmv2xJQBR4sA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [freebsd]
+
+  '@snazzah/davey-linux-arm-gnueabihf@0.1.9':
+    resolution: {integrity: sha512-xDaAFUC/1+n/YayNwKsqKOBMuW0KI6F0SjgWU+krYTQTVmAKNjOM80IjemrVoqTpBOxBsT80zEtct2wj11CE3Q==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [linux]
+
+  '@snazzah/davey-linux-arm64-gnu@0.1.9':
+    resolution: {integrity: sha512-t1VxFBzWExPNpsNY/9oStdAAuHqFvwZvIO2YPYyVNstxfi2KmAbHMweHUW7xb2ppXuhVQZ4VGmmeXiXcXqhPBw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@snazzah/davey-linux-arm64-musl@0.1.9':
+    resolution: {integrity: sha512-Xvlr+nBPzuFV4PXHufddlt08JsEyu0p8mX2DpqdPxdpysYIH4I8V86yJiS4tk04a6pLBDd8IxTbBwvXJKqd/LQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@snazzah/davey-linux-x64-gnu@0.1.9':
+    resolution: {integrity: sha512-6Uunc/NxiEkg1reroAKZAGfOtjl1CGa7hfTTVClb2f+DiA8ZRQWBh+3lgkq/0IeL262B4F14X8QRv5Bsv128qw==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@snazzah/davey-linux-x64-musl@0.1.9':
+    resolution: {integrity: sha512-fFQ/n3aWt1lXhxSdy+Ge3gi5bR3VETMVsWhH0gwBALUKrbo3ZzgSktm4lNrXE9i0ncMz/CDpZ5i0wt/N3XphEQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@snazzah/davey-wasm32-wasi@0.1.9':
+    resolution: {integrity: sha512-xWvzej8YCVlUvzlpmqJMIf0XmLlHqulKZ2e7WNe2TxQmsK+o0zTZqiQYs2MwaEbrNXBhYlHDkdpuwoXkJdscNQ==}
+    engines: {node: '>=14.0.0'}
+    cpu: [wasm32]
+
+  '@snazzah/davey-win32-arm64-msvc@0.1.9':
+    resolution: {integrity: sha512-sTqry/DfltX2OdW1CTLKa3dFYN5FloAEb2yhGsY1i5+Bms6OhwByXfALvyMHYVo61Th2+sD+9BJpQffHFKDA3w==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@snazzah/davey-win32-ia32-msvc@0.1.9':
+    resolution: {integrity: sha512-twD3LwlkGnSwphsCtpGb5ztpBIWEvGdc0iujoVkdzZ6nJiq5p8iaLjJMO4hBm9h3s28fc+1Qd7AMVnagiOasnA==}
+    engines: {node: '>= 10'}
+    cpu: [ia32]
+    os: [win32]
+
+  '@snazzah/davey-win32-x64-msvc@0.1.9':
+    resolution: {integrity: sha512-eMnXbv4GoTngWYY538i/qHz2BS+RgSXFsvKltPzKqnqzPzhQZIY7TemEJn3D5yWGfW4qHve9u23rz93FQqnQMA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@snazzah/davey@0.1.9':
+    resolution: {integrity: sha512-vNZk5y+IsxjwzTAXikvzz5pqMLb35YytC64nVF2MAFVhjpXu9ITOKUriZ0JG/llwzCAi56jb5x0cXDRIyE2A2A==}
+    engines: {node: '>= 10'}
 
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
@@ -2890,6 +3035,10 @@ packages:
 
   '@vitest/utils@4.0.18':
     resolution: {integrity: sha512-msMRKLMVLWygpK3u2Hybgi4MNjcYJvwTb0Ru09+fOyCXIgT5raYP041DRRdiJiI3k/2U6SEbAETB3YtBrUkCFA==}
+
+  '@vladfrangu/async_event_emitter@2.4.7':
+    resolution: {integrity: sha512-Xfe6rpCTxSxfbswi/W/Pz7zp1WWSNn4A0eW4mLkQUewCrXXtMj31lCg+iQyTkh/CkusZSq9eDflu7tjEDXUY6g==}
+    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
   '@wasm-audio-decoders/common@9.0.7':
     resolution: {integrity: sha512-WRaUuWSKV7pkttBygml/a6dIEpatq2nnZGFIoPTc5yPLkxL6Wk4YaslPM98OPQvWacvNZ+Py9xROGDtrFBDzag==}
@@ -3214,11 +3363,6 @@ packages:
   class-variance-authority@0.7.1:
     resolution: {integrity: sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg==}
 
-  clawdbot@2026.1.24-3:
-    resolution: {integrity: sha512-zt9BzhWXduq8ZZR4rfzQDurQWAgmijTTyPZCQGrn5ew6wCEwhxxEr2/NHG7IlCwcfRsKymsY4se9KMhoNz0JtQ==}
-    engines: {node: '>=22.12.0'}
-    hasBin: true
-
   cli-cursor@5.0.0:
     resolution: {integrity: sha512-aCj4O5wKyszjMmDT4tZj93kxyydN/K5zPWSCe6/0AV/AA1pqe5ZBIw0a2ZfPQV7lL5/yb5HsUreJ6UFAF1tEQw==}
     engines: {node: '>=18'}
@@ -3409,6 +3553,10 @@ packages:
 
   discord-api-types@0.38.37:
     resolution: {integrity: sha512-Cv47jzY1jkGkh5sv0bfHYqGgKOWO1peOrGMkDFM4UmaGMOTgOW8QSexhvixa9sVOiz8MnVOBryWYyw/CEVhj7w==}
+
+  discord.js@14.25.1:
+    resolution: {integrity: sha512-2l0gsPOLPs5t6GFZfQZKnL1OJNYFcuC/ETWsW4VtKVD/tg4ICa9x+jb9bkPffkMdRpRpuUaO/fKkHCBeiCKh8g==}
+    engines: {node: '>=18'}
 
   docx-preview@0.3.7:
     resolution: {integrity: sha512-Lav69CTA/IYZPJTsKH7oYeoZjyg96N0wEJMNslGJnZJ+dMUZK85Lt5ASC79yUlD48ecWjuv+rkcmFt6EVPV0Xg==}
@@ -4186,6 +4334,9 @@ packages:
   lodash.once@4.1.1:
     resolution: {integrity: sha512-Sb487aTOCr9drQVL8pIxOzVhafOjZN9UU54hiN8PU3uAiSV7lx1yYNpbNmex2PK6dSJoNTSJUUswT651yww3Mg==}
 
+  lodash.snakecase@4.1.1:
+    resolution: {integrity: sha512-QZ1d4xoBHYUeuouhEq3lk3Uq7ldgyFXGBhg04+oRLnIz8o9T65Eh+8YdroUwn846zchkA9yDsDl5CVVaV2nqYw==}
+
   lodash@4.17.23:
     resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
 
@@ -4230,6 +4381,9 @@ packages:
 
   lucide@0.563.0:
     resolution: {integrity: sha512-2zBzDJ5n2Plj3d0ksj6h9TWPOSiKu9gtxJxnBAye11X/8gfWied6IYJn6ADYBp1NPoJmgpyOYP3wMrVx69+2AA==}
+
+  magic-bytes.js@1.13.0:
+    resolution: {integrity: sha512-afO2mnxW7GDTXMm5/AoN1WuOcdoKhtgXjIvHmobqTD1grNplhGdv3PFOyjCVmrnOZBIT/gD/koDKpYG+0mvHcg==}
 
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
@@ -4545,6 +4699,9 @@ packages:
 
   opus-decoder@0.7.11:
     resolution: {integrity: sha512-+e+Jz3vGQLxRTBHs8YJQPRPc1Tr+/aC6coV/DlZylriA29BdHQAYXhvNRKtjftof17OFng0+P4wsFIqQu3a48A==}
+
+  opusscript@0.1.1:
+    resolution: {integrity: sha512-mL0fZZOUnXdZ78woRXp18lApwpp0lF5tozJOD1Wut0dgrA9WuQTgSels/CSmFleaAZrJi/nci5KOVtbuxeWoQA==}
 
   ora@8.2.0:
     resolution: {integrity: sha512-weP+BZ8MVNnlCm8c0Qdc1WSWq4Qn7I+9CJGm7Qali6g44e/PUzbjNqJX5NJ9ljlNMosfJvg1fKEGILklK9cwnw==}
@@ -5193,6 +5350,7 @@ packages:
   tar@7.5.4:
     resolution: {integrity: sha512-AN04xbWGrSTDmVwlI4/GTlIIwMFk/XEv7uL8aa57zuvRy6s4hdBed+lVq2fAZ89XDa7Us3ANXcE3Tvqvja1kTA==}
     engines: {node: '>=18'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
 
   thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
@@ -5256,6 +5414,9 @@ packages:
   ts-algebra@2.0.0:
     resolution: {integrity: sha512-FPAhNPFMrkwz76P7cdjdmiShwMynZYN6SgOujD1urY4oNm80Ou9oMdmbR45LotcKOXoy7wSmHkRFE6Mxbrhefw==}
 
+  ts-mixer@6.0.4:
+    resolution: {integrity: sha512-ufKpbmrugz5Aou4wcr5Wc1UUFWOLhq+Fm6qa6P0w0K5Qw2yhaUoiWszhCVuNQyNwrlGiscHOmqYoAox1PtvgjA==}
+
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
@@ -5277,6 +5438,9 @@ packages:
 
   tweetnacl@0.14.5:
     resolution: {integrity: sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==}
+
+  tweetnacl@1.0.3:
+    resolution: {integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==}
 
   type-is@1.6.18:
     resolution: {integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==}
@@ -5317,6 +5481,10 @@ packages:
 
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
+
+  undici@6.21.3:
+    resolution: {integrity: sha512-gBLkYIlEnSp8pFbT64yFgGE6UIB9tAkhukC23PmMDCe5Nd+cRqKxSjw5y54MK2AZMgZfJWMaNE4nYUHgi1XEOw==}
+    engines: {node: '>=18.17'}
 
   undici@7.19.0:
     resolution: {integrity: sha512-Heho1hJD81YChi+uS2RkSjcVO+EQLmLSyUlHyp7Y/wFbxQaGb4WXVKD073JytrjXJVkSZVzoE2MCSOKugFGtOQ==}
@@ -6433,13 +6601,13 @@ snapshots:
 
   '@borewit/text-codec@0.2.1': {}
 
-  '@buape/carbon@0.14.0(hono@4.11.4)':
+  '@buape/carbon@0.14.0(hono@4.11.4)(opusscript@0.1.1)':
     dependencies:
       '@types/node': 25.0.10
       discord-api-types: 0.38.37
     optionalDependencies:
       '@cloudflare/workers-types': 4.20260120.0
-      '@discordjs/voice': 0.19.0
+      '@discordjs/voice': 0.19.0(opusscript@0.1.1)
       '@hono/node-server': 1.19.9(hono@4.11.4)
       '@types/bun': 1.3.6
       '@types/ws': 8.18.1
@@ -6533,11 +6701,45 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@discordjs/voice@0.19.0':
+  '@discordjs/builders@1.13.1':
+    dependencies:
+      '@discordjs/formatters': 0.6.2
+      '@discordjs/util': 1.2.0
+      '@sapphire/shapeshift': 4.0.0
+      discord-api-types: 0.38.37
+      fast-deep-equal: 3.1.3
+      ts-mixer: 6.0.4
+      tslib: 2.8.1
+
+  '@discordjs/collection@1.5.3': {}
+
+  '@discordjs/collection@2.1.1': {}
+
+  '@discordjs/formatters@0.6.2':
+    dependencies:
+      discord-api-types: 0.38.37
+
+  '@discordjs/rest@2.6.0':
+    dependencies:
+      '@discordjs/collection': 2.1.1
+      '@discordjs/util': 1.2.0
+      '@sapphire/async-queue': 1.5.5
+      '@sapphire/snowflake': 3.5.3
+      '@vladfrangu/async_event_emitter': 2.4.7
+      discord-api-types: 0.38.37
+      magic-bytes.js: 1.13.0
+      tslib: 2.8.1
+      undici: 6.21.3
+
+  '@discordjs/util@1.2.0':
+    dependencies:
+      discord-api-types: 0.38.37
+
+  '@discordjs/voice@0.19.0(opusscript@0.1.1)':
     dependencies:
       '@types/ws': 8.18.1
       discord-api-types: 0.38.37
-      prism-media: 1.3.5
+      prism-media: 1.3.5(opusscript@0.1.1)
       tslib: 2.8.1
       ws: 8.19.0
     transitivePeerDependencies:
@@ -6547,7 +6749,21 @@ snapshots:
       - node-opus
       - opusscript
       - utf-8-validate
-    optional: true
+
+  '@discordjs/ws@1.2.3':
+    dependencies:
+      '@discordjs/collection': 2.1.1
+      '@discordjs/rest': 2.6.0
+      '@discordjs/util': 1.2.0
+      '@sapphire/async-queue': 1.5.5
+      '@types/ws': 8.18.1
+      '@vladfrangu/async_event_emitter': 2.4.7
+      discord-api-types: 0.38.37
+      tslib: 2.8.1
+      ws: 8.19.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
 
   '@emnapi/core@1.8.1':
     dependencies:
@@ -7895,6 +8111,15 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.55.3':
     optional: true
 
+  '@sapphire/async-queue@1.5.5': {}
+
+  '@sapphire/shapeshift@4.0.0':
+    dependencies:
+      fast-deep-equal: 3.1.3
+      lodash: 4.17.23
+
+  '@sapphire/snowflake@3.5.3': {}
+
   '@scure/base@1.1.1': {}
 
   '@scure/bip32@1.3.1':
@@ -8349,6 +8574,67 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  '@snazzah/davey-android-arm-eabi@0.1.9':
+    optional: true
+
+  '@snazzah/davey-android-arm64@0.1.9':
+    optional: true
+
+  '@snazzah/davey-darwin-arm64@0.1.9':
+    optional: true
+
+  '@snazzah/davey-darwin-x64@0.1.9':
+    optional: true
+
+  '@snazzah/davey-freebsd-x64@0.1.9':
+    optional: true
+
+  '@snazzah/davey-linux-arm-gnueabihf@0.1.9':
+    optional: true
+
+  '@snazzah/davey-linux-arm64-gnu@0.1.9':
+    optional: true
+
+  '@snazzah/davey-linux-arm64-musl@0.1.9':
+    optional: true
+
+  '@snazzah/davey-linux-x64-gnu@0.1.9':
+    optional: true
+
+  '@snazzah/davey-linux-x64-musl@0.1.9':
+    optional: true
+
+  '@snazzah/davey-wasm32-wasi@0.1.9':
+    dependencies:
+      '@napi-rs/wasm-runtime': 1.1.1
+    optional: true
+
+  '@snazzah/davey-win32-arm64-msvc@0.1.9':
+    optional: true
+
+  '@snazzah/davey-win32-ia32-msvc@0.1.9':
+    optional: true
+
+  '@snazzah/davey-win32-x64-msvc@0.1.9':
+    optional: true
+
+  '@snazzah/davey@0.1.9':
+    optionalDependencies:
+      '@snazzah/davey-android-arm-eabi': 0.1.9
+      '@snazzah/davey-android-arm64': 0.1.9
+      '@snazzah/davey-darwin-arm64': 0.1.9
+      '@snazzah/davey-darwin-x64': 0.1.9
+      '@snazzah/davey-freebsd-x64': 0.1.9
+      '@snazzah/davey-linux-arm-gnueabihf': 0.1.9
+      '@snazzah/davey-linux-arm64-gnu': 0.1.9
+      '@snazzah/davey-linux-arm64-musl': 0.1.9
+      '@snazzah/davey-linux-x64-gnu': 0.1.9
+      '@snazzah/davey-linux-x64-musl': 0.1.9
+      '@snazzah/davey-wasm32-wasi': 0.1.9
+      '@snazzah/davey-win32-arm64-msvc': 0.1.9
+      '@snazzah/davey-win32-ia32-msvc': 0.1.9
+      '@snazzah/davey-win32-x64-msvc': 0.1.9
+
   '@standard-schema/spec@1.1.0': {}
 
   '@swc/helpers@0.5.18':
@@ -8733,6 +9019,8 @@ snapshots:
       '@vitest/pretty-format': 4.0.18
       tinyrainbow: 3.0.3
 
+  '@vladfrangu/async_event_emitter@2.4.7': {}
+
   '@wasm-audio-decoders/common@9.0.7':
     dependencies:
       '@eshaz/web-worker': 1.2.2
@@ -9098,84 +9386,6 @@ snapshots:
     dependencies:
       clsx: 2.1.1
 
-  clawdbot@2026.1.24-3(@types/express@5.0.6)(audio-decode@2.2.3)(devtools-protocol@0.0.1561482)(typescript@5.9.3):
-    dependencies:
-      '@agentclientprotocol/sdk': 0.13.1(zod@4.3.6)
-      '@aws-sdk/client-bedrock': 3.975.0
-      '@buape/carbon': 0.14.0(hono@4.11.4)
-      '@clack/prompts': 0.11.0
-      '@grammyjs/runner': 2.0.3(grammy@1.39.3)
-      '@grammyjs/transformer-throttler': 1.2.1(grammy@1.39.3)
-      '@homebridge/ciao': 1.3.4
-      '@line/bot-sdk': 10.6.0
-      '@lydell/node-pty': 1.2.0-beta.3
-      '@mariozechner/pi-agent-core': 0.49.3(ws@8.19.0)(zod@4.3.6)
-      '@mariozechner/pi-ai': 0.49.3(ws@8.19.0)(zod@4.3.6)
-      '@mariozechner/pi-coding-agent': 0.49.3(ws@8.19.0)(zod@4.3.6)
-      '@mariozechner/pi-tui': 0.49.3
-      '@mozilla/readability': 0.6.0
-      '@sinclair/typebox': 0.34.47
-      '@slack/bolt': 4.6.0(@types/express@5.0.6)
-      '@slack/web-api': 7.13.0
-      '@whiskeysockets/baileys': 7.0.0-rc.9(audio-decode@2.2.3)(sharp@0.34.5)
-      ajv: 8.17.1
-      body-parser: 2.2.2
-      chalk: 5.6.2
-      chokidar: 5.0.0
-      chromium-bidi: 13.0.1(devtools-protocol@0.0.1561482)
-      cli-highlight: 2.1.11
-      commander: 14.0.2
-      croner: 9.1.0
-      detect-libc: 2.1.2
-      discord-api-types: 0.38.37
-      dotenv: 17.2.3
-      express: 5.2.1
-      file-type: 21.3.0
-      grammy: 1.39.3
-      hono: 4.11.4
-      jiti: 2.6.1
-      json5: 2.2.3
-      jszip: 3.10.1
-      linkedom: 0.18.12
-      long: 5.3.2
-      markdown-it: 14.1.0
-      node-edge-tts: 1.2.9
-      osc-progress: 0.3.0
-      pdfjs-dist: 5.4.530
-      playwright-core: 1.58.0
-      proper-lockfile: 4.1.2
-      qrcode-terminal: 0.12.0
-      sharp: 0.34.5
-      sqlite-vec: 0.1.7-alpha.2
-      tar: 7.5.4
-      tslog: 4.10.2
-      undici: 7.19.0
-      ws: 8.19.0
-      yaml: 2.8.2
-      zod: 4.3.6
-    optionalDependencies:
-      '@napi-rs/canvas': 0.1.88
-      node-llama-cpp: 3.15.0(typescript@5.9.3)
-    transitivePeerDependencies:
-      - '@discordjs/opus'
-      - '@modelcontextprotocol/sdk'
-      - '@types/express'
-      - audio-decode
-      - aws-crt
-      - bufferutil
-      - canvas
-      - debug
-      - devtools-protocol
-      - encoding
-      - ffmpeg-static
-      - jimp
-      - link-preview-js
-      - node-opus
-      - opusscript
-      - supports-color
-      - typescript
-      - utf-8-validate
-
   cli-cursor@5.0.0:
     dependencies:
       restore-cursor: 5.1.0
@@ -9350,6 +9560,25 @@ snapshots:
   diff@8.0.3: {}
 
   discord-api-types@0.38.37: {}
+
+  discord.js@14.25.1:
+    dependencies:
+      '@discordjs/builders': 1.13.1
+      '@discordjs/collection': 1.5.3
+      '@discordjs/formatters': 0.6.2
+      '@discordjs/rest': 2.6.0
+      '@discordjs/util': 1.2.0
+      '@discordjs/ws': 1.2.3
+      '@sapphire/snowflake': 3.5.3
+      discord-api-types: 0.38.37
+      fast-deep-equal: 3.1.3
+      lodash.snakecase: 4.1.1
+      magic-bytes.js: 1.13.0
+      tslib: 2.8.1
+      undici: 6.21.3
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
 
   docx-preview@0.3.7:
     dependencies:
@@ -10265,6 +10494,8 @@ snapshots:
 
   lodash.once@4.1.1: {}
 
+  lodash.snakecase@4.1.1: {}
+
   lodash@4.17.23: {}
 
   log-symbols@6.0.0:
@@ -10312,6 +10543,8 @@ snapshots:
   lucide@0.544.0: {}
 
   lucide@0.563.0: {}
+
+  magic-bytes.js@1.13.0: {}
 
   magic-string@0.30.21:
     dependencies:
@@ -10645,6 +10878,8 @@ snapshots:
       '@wasm-audio-decoders/common': 9.0.7
     optional: true
 
+  opusscript@0.1.1: {}
+
   ora@8.2.0:
     dependencies:
       chalk: 5.6.2
@@ -10839,8 +11074,9 @@ snapshots:
       parse-ms: 4.0.0
     optional: true
 
-  prism-media@1.3.5:
-    optional: true
+  prism-media@1.3.5(opusscript@0.1.1):
+    optionalDependencies:
+      opusscript: 0.1.1
 
   process-nextick-args@2.0.1: {}
 
@@ -11531,6 +11767,8 @@ snapshots:
 
   ts-algebra@2.0.0: {}
 
+  ts-mixer@6.0.4: {}
+
   tslib@2.8.1: {}
 
   tslog@4.10.2: {}
@@ -11549,6 +11787,8 @@ snapshots:
       safe-buffer: 5.2.1
 
   tweetnacl@0.14.5: {}
+
+  tweetnacl@1.0.3: {}
 
   type-is@1.6.18:
     dependencies:
@@ -11580,6 +11820,8 @@ snapshots:
   undici-types@6.21.0: {}
 
   undici-types@7.16.0: {}
+
+  undici@6.21.3: {}
 
   undici@7.19.0: {}
 

@@ -42,6 +42,10 @@ import {
 import { stripEnvelopeFromMessages } from "../chat-sanitize.js";
 import { formatForLog } from "../ws-log.js";
 import type { GatewayRequestContext, GatewayRequestHandlers } from "./types.js";
+// Voice session TTS support
+import { getActiveVoiceGuild, getVoiceManager } from "../../discord/voice.js";
+import { textToSpeech } from "../../tts/tts.js";
+import { loadConfig } from "../../config/config.js";
 
 type TranscriptAppendResult = {
   ok: boolean;
@@ -178,6 +182,97 @@ function broadcastChatError(params: {
   };
   params.context.broadcast("chat", payload);
   params.context.nodeSendToSession(params.sessionKey, "chat", payload);
+}
+
+// Voice session helpers
+const VOICE_SESSION_PREFIX = "agent:main:discord:voice:";
+
+function isVoiceSession(sessionKey: string): boolean {
+  return sessionKey.startsWith(VOICE_SESSION_PREFIX);
+}
+
+// Remove emojis from text for TTS
+function stripEmojis(text: string): string {
+  // Remove emoji characters
+  return text
+    .replace(
+      /[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F600}-\u{1F64F}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{1F900}-\u{1F9FF}]|[\u{1FA00}-\u{1FAFF}]|[\u{2300}-\u{23FF}]|[\u{2B50}]|[\u{203C}\u{2049}]|[\u{25AA}\u{25AB}\u{25B6}\u{25C0}\u{25FB}-\u{25FE}]|[\u{00A9}\u{00AE}]|[\u{2122}\u{2139}]|[\u{3030}\u{303D}]|[\u{3297}\u{3299}]/gu,
+      "",
+    )
+    .trim();
+}
+
+async function deliverVoiceResponse(sessionKey: string, text: string): Promise<boolean> {
+  if (!isVoiceSession(sessionKey)) return false;
+
+  const guildId = getActiveVoiceGuild();
+  if (!guildId) {
+    console.log("[chat] Voice session but no active guild");
+    return false;
+  }
+
+  const cfg = loadConfig();
+  const discordConfig = cfg.channels?.discord;
+  const token =
+    process.env.DISCORD_BOT_TOKEN ??
+    discordConfig?.token ??
+    discordConfig?.accounts?.default?.token;
+
+  if (!token) {
+    console.log("[chat] Voice session but no Discord token");
+    return false;
+  }
+
+  const manager = getVoiceManager(token);
+  if (!manager || !manager.isConnected(guildId)) {
+    console.log("[chat] Voice session but not connected to voice");
+    return false;
+  }
+
+  try {
+    const cleanText = stripEmojis(text);
+    console.log(
+      `[chat] Generating TTS for voice session, text length: ${cleanText.length}, text: ${cleanText.substring(0, 200)}`,
+    );
+    if (!cleanText) {
+      console.log(`[chat] Text is empty after stripping emojis`);
+      return false;
+    }
+    const ttsResult = await textToSpeech({
+      text: cleanText,
+      cfg,
+      channel: "discord",
+    });
+
+    if (!ttsResult.success || !ttsResult.audioPath) {
+      console.log(`[chat] TTS failed: ${ttsResult.error}`);
+      return false;
+    }
+
+    console.log(`[chat] TTS generated: ${ttsResult.audioPath}`);
+
+    // Check if audio file exists and has content
+    const fs = await import("node:fs");
+    if (fs.existsSync(ttsResult.audioPath)) {
+      const stats = fs.statSync(ttsResult.audioPath);
+      console.log(`[chat] Audio file size: ${stats.size} bytes`);
+      if (stats.size === 0) {
+        console.log(`[chat] Audio file is empty!`);
+        return false;
+      }
+    } else {
+      console.log(`[chat] Audio file does not exist!`);
+      return false;
+    }
+
+    console.log(`[chat] Playing audio in guild ${guildId}`);
+    await manager.play(guildId, ttsResult.audioPath);
+    console.log(`[chat] Voice response delivered via TTS`);
+    return true;
+  } catch (err) {
+    console.error(`[chat] Voice delivery error:`, err);
+    return false;
+  }
 }
 
 export const chatHandlers: GatewayRequestHandlers = {
@@ -480,6 +575,11 @@ export const chatHandlers: GatewayRequestHandlers = {
           const text = payload.text?.trim() ?? "";
           if (!text) return;
           finalReplyParts.push(text);
+
+          // Deliver via TTS for voice sessions
+          if (isVoiceSession(p.sessionKey)) {
+            await deliverVoiceResponse(p.sessionKey, text);
+          }
         },
       });
 
@@ -504,7 +604,7 @@ export const chatHandlers: GatewayRequestHandlers = {
           },
         },
       })
-        .then(() => {
+        .then(async () => {
           if (!agentRunStarted) {
             const combinedReply = finalReplyParts
               .map((part) => part.trim())
@@ -513,6 +613,11 @@ export const chatHandlers: GatewayRequestHandlers = {
               .trim();
             let message: Record<string, unknown> | undefined;
             if (combinedReply) {
+              // Check if this is a voice session and deliver via TTS
+              if (isVoiceSession(p.sessionKey)) {
+                await deliverVoiceResponse(p.sessionKey, combinedReply);
+              }
+
               const { storePath: latestStorePath, entry: latestEntry } = loadSessionEntry(
                 p.sessionKey,
               );
