@@ -74,6 +74,21 @@ export async function handleCommands(params: HandleCommandsParams): Promise<Comm
   // Trigger internal hook for reset/new commands
   if (resetRequested && params.command.isAuthorizedSender) {
     const commandAction = resetMatch?.[1] ?? "new";
+
+    // Trigger session:end for the previous session before reset
+    if (params.previousSessionEntry) {
+      const sessionEndEvent = createInternalHookEvent("session", "end", params.sessionKey ?? "", {
+        sessionEntry: params.previousSessionEntry,
+        sessionId: params.previousSessionEntry.sessionId,
+        sessionFile: params.previousSessionEntry.sessionFile,
+        commandSource: params.command.surface,
+        senderId: params.command.senderId,
+        reason: "reset", // Session ended due to /new or /reset command
+        cfg: params.cfg,
+      });
+      await triggerInternalHook(sessionEndEvent);
+    }
+
     const hookEvent = createInternalHookEvent("command", commandAction, params.sessionKey ?? "", {
       sessionEntry: params.sessionEntry,
       previousSessionEntry: params.previousSessionEntry,

@@ -240,6 +240,15 @@ Triggered when the gateway starts:
 
 - **`gateway:startup`**: After channels start and hooks are loaded
 
+### Session Events
+
+Triggered during session lifecycle:
+
+- **`session:start`**: When a new session begins (after `/new`, `/reset`, or first message from a new sender)
+  - Context includes: `sessionEntry`, `sessionId`, `sessionFile`, `commandSource`, `senderId`, `isReset` (true if triggered by reset command), `cfg`
+- **`session:end`**: When a session ends (before `/new` or `/reset` clears the session)
+  - Context includes: `sessionEntry` (previous session), `sessionId`, `sessionFile`, `commandSource`, `senderId`, `reason` ("reset"), `cfg`
+
 ### Tool Result Hooks (Plugin API)
 
 These hooks are not event-stream listeners; they let plugins synchronously adjust tool results before OpenClaw persists them.
@@ -249,9 +258,6 @@ These hooks are not event-stream listeners; they let plugins synchronously adjus
 ### Future Events
 
 Planned event types:
-
-- **`session:start`**: When a new session begins
-- **`session:end`**: When a session ends
 - **`agent:error`**: When an agent encounters an error
 - **`message:sent`**: When a message is sent
 - **`message:received`**: When a message is received
