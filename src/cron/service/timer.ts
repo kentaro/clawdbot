@@ -1,7 +1,12 @@
 import type { HeartbeatRunResult } from "../../infra/heartbeat-wake.js";
 import type { CronJob } from "../types.js";
 import type { CronEvent, CronServiceState } from "./state.js";
-import { computeJobNextRunAtMs, nextWakeAtMs, resolveJobPayloadTextForMain } from "./jobs.js";
+import {
+  computeJobNextRunAtMs,
+  nextWakeAtMs,
+  recomputeNextRuns,
+  resolveJobPayloadTextForMain,
+} from "./jobs.js";
 import { locked } from "./locked.js";
 import { ensureLoaded, persist } from "./store.js";
 
@@ -37,8 +42,15 @@ export async function onTimer(state: CronServiceState) {
   state.running = true;
   try {
     await locked(state, async () => {
-      await ensureLoaded(state, { forceReload: true });
+      // Skip recompute during load to avoid race condition where due jobs
+      // get their nextRunAtMs updated before they can be executed.
+      // croner.nextRun() is exclusive (returns time > now), so if we recompute
+      // before runDueJobs, jobs that are due at exactly 'now' get skipped.
+      await ensureLoaded(state, { forceReload: true, skipRecompute: true });
       await runDueJobs(state);
+      // Recompute after running due jobs to update nextRunAtMs for jobs
+      // that were not executed (e.g., disabled or already running).
+      recomputeNextRuns(state);
       await persist(state);
       armTimer(state);
     });
